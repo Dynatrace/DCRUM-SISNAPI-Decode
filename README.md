@@ -15,7 +15,7 @@ Detailed description is available [here](https://community.dynatrace.com/communi
 
 ## Where can I find the newest version of the SISNAPI script?
 
-See the [Universal Decode Implementations](https://community.dynatrace.com/community/display/PUBDCRUM/Universal+Decode+Implementations#UniversalDecodeImplementations-SISNAPI)
+See the [Universal Decode Implementations](https://community.dynatrace.com/community/display/PUBDCRUM/Bespoke+application+monitoring+with+the+Universal+Decode#BespokeapplicationmonitoringwiththeUniversalDecode-SISNAPI)
 page.
 
 ## How can I run the script from sources?
