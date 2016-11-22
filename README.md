@@ -1,9 +1,9 @@
 # SISNAPI script for DC RUM
 
 The script enables you to monitor performance of SISNAPI. By default, it recognizes Siebel command (parameter SWECmd), a method name if executed (parameter SWEMethod), as well as the business context in which an operation is executed.This allows you to monitor qualitative and quantitative parameters of executed operations, pinpoint the fault domain and determine the root cause of slow operations.
-Additionally, the analysis module parses the responses, through which it is capable of reporting Siebel errors. To achieve that, you need to configure the Simple Parser Availability reporting and enable reporting of Operation Attributes 4 and 5 for Failures (application) at the Software Service level.
+Additionally, the analysis module parses the responses, through which it is capable of reporting Siebel errors.
 
-Detailed description is available [here](https://community.dynatrace.com/community/display/PUBDCRUM/Universal+Decode+Implementations#UniversalDecodeImplementations-SISNAPI).
+Detailed description is available [here](https://community.dynatrace.com/community/display/PUBDCRUM/Bespoke+application+monitoring+with+the+Universal+Decode#BespokeapplicationmonitoringwiththeUniversalDecode-SISNAPI).
 
 ## What is Dynatrace DC RUM?
 
@@ -11,7 +11,7 @@ Detailed description is available [here](https://community.dynatrace.com/communi
 
 ## Which DC RUM versions are compatible with the SISNAPI script?
 
-12.3 or later, Classic AMD.
+12.4 or later HS AMD.
 
 ## Where can I find the newest version of the SISNAPI script?
 

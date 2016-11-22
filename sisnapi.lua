@@ -10,7 +10,7 @@ local REQUEST_MESSAGE_TYPE = 35
 local REPLY_MESSAGE_TYPE = 36
 
 -- local HEADER_SIZE_1 = 0x18
-local HEADER_SIZE_1 = 92
+local HEADER_SIZE_1 = 4
 
 local HEADER_SIZE_2 = 0x04
 
@@ -151,6 +151,7 @@ function SisnapiMessageHandler.parseMessage(messageHandler)
   local requestid_hex = HexDumpString(payload:sub(15,16))
    --     amd.print(string.format("Requestid_hex: %s", requestid_hex))
 
+messageHandler:setMsgState('requestId',requestid_hex)
     
     --amd.print(string.format("Msg len: %d %d %s",messageSize+ HEADER_SIZE_1, payload:len(), requestId))
     messageHandler:setYahaSessionId(requestid_hex)
@@ -218,6 +219,9 @@ end
 
 function parse_request(payload, hit, state)
     
+local key = state:getMsgState('requestId',0)
+-- amd.print(string.format("requ_requestId: %s", key))
+hit:setCorrelationId(key, key:len())
     
     local isLittleEndian = false
     
@@ -361,13 +365,13 @@ hit:setParameter(4, param4, param4:len())
 hit:setParameter(5, param5, param5:len())
 hit:setParameter(6, param6, param6:len())
 
-
+OperationName = op4_d .. "&" .. SWECmd .. "&" .. SWEMethod .. "&" .. SWEView
 	
     -- hit:setOperationName(operation_name, operation_name:len())
     -- operation_name = payload:sub(operation_name_offset, operation_name_offset + operation_length - 2)
    -- amd.print(string.format("operation_name: %s", operation_name))
 
-local operation_name = op4_d
+local operation_name = OperationName
 -- amd.print(string.format("operation_name: %s", operation_name))
 
     hit:setOperationName(operation_name, operation_name:len())
@@ -381,7 +385,8 @@ function parse_response(payload, hit, state)
 
     local isLittleEndian = false
 
-
+-- local key = state:getMsgState('requestId',0)
+-- amd.print(string.format("resp_requestId: %s", key))
 
 
     local messageSize = unpack_short(payload, 3, isLittleEndian)
